@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Tasklist.Domain.Entities;
 using Tasklist.Queries.Interfaces;
 using Tasklist.Queries.Models;
 

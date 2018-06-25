@@ -47,7 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contexto\ConnectionString.cs" />
+    <Compile Include="ConnectionData\ConnectionString.cs" />
     <Compile Include="Contexto\TaskContext.cs" />
     <Compile Include="Migrations\201806240551202_InitialCreate.cs" />
     <Compile Include="Migrations\201806240551202_InitialCreate.Designer.cs">

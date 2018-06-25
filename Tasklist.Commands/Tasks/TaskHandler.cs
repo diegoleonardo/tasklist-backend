@@ -36,7 +36,8 @@ namespace Tasklist.Commands.Tasks
                 }
                 var task = new Task(Guid.NewGuid(), newTask.Title, TaskStatus.CREATED, newTask.Description);
                 _repository.Insert(task);
-                return new CommandResult(true, SuccessMessages.OPERATION_SUCCESS);
+                var taskDTO = new TaskCreated() { id = task.Id, title = task.Title, description = task.Description };
+                return new CommandResult(true, SuccessMessages.OPERATION_SUCCESS, taskDTO);
             }
             catch (Exception exception)
             {

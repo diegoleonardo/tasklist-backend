@@ -15,18 +15,43 @@ namespace Tasklist.RESTfulApi.Controllers
     public class TaskController : ApiController
     {
         private readonly ITaskHandler _taskHandler;
-        private readonly IQueryHandler<GetTasksQuery, IEnumerable<TaskDTO>> _queryHandler;
-        public TaskController(ITaskHandler taskHandler, IQueryHandler<GetTasksQuery, IEnumerable<TaskDTO>> queryHandler)
+        private readonly IQueryHandler<GetTasksQuery, IEnumerable<TaskDTO>> _getTasksQueryHandler;
+        private readonly IQueryHandler<GetTaskByIdQuery, TaskDTO> _getTaskByIdQueryHandler;
+        public TaskController(ITaskHandler taskHandler, IQueryHandler<GetTasksQuery, 
+            IEnumerable<TaskDTO>> getTasksQueryHandler,
+            IQueryHandler<GetTaskByIdQuery, TaskDTO> getTaskByIdQueryHandler)
         {
             _taskHandler = taskHandler;
-            _queryHandler = queryHandler;
+            _getTasksQueryHandler = getTasksQueryHandler;
+            _getTaskByIdQueryHandler = getTaskByIdQueryHandler;
         }
         public IHttpActionResult Get()
         {
-            var query = new GetTasksQuery();
-            var tasks = _queryHandler.Handle(query);
+            try
+            {
+                var query = new GetTasksQuery();
+                var tasks = _getTasksQueryHandler.Handle(query);
 
-            return Json<object>(tasks);
+                return Json<object>(tasks);
+            }
+            catch (Exception exception)
+            {
+                return InternalServerError(exception);
+            }
+        }
+        public IHttpActionResult Get(Guid id)
+        {
+            try
+            {
+                var query = new GetTaskByIdQuery(id);
+                var tasks = _getTaskByIdQueryHandler.Handle(query);
+
+                return Json<object>(tasks);
+            }
+            catch (Exception exception)
+            {
+                return InternalServerError(exception);
+            }
         }
         public IHttpActionResult Post([FromBody]TaskViewModel taskCreator)
         {
@@ -38,13 +63,13 @@ namespace Tasklist.RESTfulApi.Controllers
                 {
                     return BadRequest(result.Message);
                 }
+
+                return Created("Task", result.Data);
             }
             catch (Exception exception)
             {
                 return InternalServerError(exception);
             }
-
-            return Created("Task", taskCreator);
         }
         public IHttpActionResult Put(Guid id, [FromBody]TaskViewModel taskViewModel)
         {

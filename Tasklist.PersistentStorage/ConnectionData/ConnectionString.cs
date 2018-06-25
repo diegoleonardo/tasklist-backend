@@ -2,6 +2,6 @@
 {
     internal static class ConnectionString
     {
-        public const string CONNECTION = "[YOUR_STRING_CONNECTION_HERE]";
+        public const string CONNECTION = "[YOUR_CONNECTION_STRING]";
     }
 }

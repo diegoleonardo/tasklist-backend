@@ -22,6 +22,7 @@ namespace Tasklist.Infra.DependencyInjection
             container.Register<IRepository<Task>, TaskRepository>(Lifestyle.Scoped); 
             container.Register<ITaskHandler, TaskHandler>(Lifestyle.Scoped);
             container.Register<IQueryHandler<GetTasksQuery, IEnumerable<TaskDTO>>, GetTasksHandler>(Lifestyle.Scoped);
+            container.Register<IQueryHandler<GetTaskByIdQuery, TaskDTO>, GetTaskByIdHandler>(Lifestyle.Scoped);
 
             return container;
         }

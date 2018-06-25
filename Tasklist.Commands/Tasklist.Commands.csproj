@@ -105,6 +105,7 @@
     <Compile Include="Messages\FailMessages.cs" />
     <Compile Include="Messages\SuccessMessages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TaskCreated.cs" />
     <Compile Include="Tasks\TaskCreatorCmd.cs" />
     <Compile Include="Tasks\TaskHandler.cs" />
     <Compile Include="Messages\ValidationMessages.cs" />
