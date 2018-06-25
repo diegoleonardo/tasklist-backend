@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5513F484-5695-40F7-AA77-266984AA1FF4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Tasklist.Infra.DependencyInjection</RootNamespace>
+    <AssemblyName>Tasklist.Infra.DependencyInjection</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="SimpleInjector, Version=4.3.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.4.3.0\lib\net45\SimpleInjector.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DependencyLoader.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Tasklist.Commands\Tasklist.Commands.csproj">
+      <Project>{bb210ac6-a976-471b-ba0a-fb783c7ee6d8}</Project>
+      <Name>Tasklist.Commands</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tasklist.Domain\Tasklist.Domain.csproj">
+      <Project>{E6F79F34-12F2-44F6-8092-70F5CDC58B99}</Project>
+      <Name>Tasklist.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tasklist.Infra.Logger\Tasklist.Infra.Logger.csproj">
+      <Project>{6db8a43a-d565-485c-b49c-7eb3c18e2645}</Project>
+      <Name>Tasklist.Infra.Logger</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tasklist.PersistentStorage\Tasklist.PersistentStorage.csproj">
+      <Project>{f8c7996f-e7a8-47ed-adb2-32f1bab5feab}</Project>
+      <Name>Tasklist.PersistentStorage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tasklist.Queries\Tasklist.Queries.csproj">
+      <Project>{61de6ea0-0e88-4a1c-a771-514373ed1f1e}</Project>
+      <Name>Tasklist.Queries</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
