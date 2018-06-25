@@ -1,5 +1,6 @@
 ﻿using System.Data.Entity;
 using Tasklist.Domain.Entities;
+using Tasklist.PersistentStorage.ConnectionData;
 
 namespace Tasklist.PersistentStorage.Contexto
 {

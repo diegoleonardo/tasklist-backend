@@ -1,4 +1,4 @@
-﻿namespace Tasklist.PersistentStorage.Contexto
+﻿namespace Tasklist.PersistentStorage.ConnectionData
 {
     internal static class ConnectionString
     {
